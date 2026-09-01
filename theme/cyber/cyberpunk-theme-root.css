@@ -1,0 +1,296 @@
+/* ============================================================
+   CYBERPUNK THEME — ROOT LAYER
+   Overrides applied via the ".cyberpunk" class on <html>/<body>,
+   using the same pattern already used by .dark / .light / .tritanopia
+   in index-*.css. Load this file AFTER index-*.css and CoreApp-*.css,
+   then toggle the theme the same way the app already toggles
+   .dark / .light (add "cyberpunk" to the root element's class list).
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
+
+/* ---------- 1. Colour system ---------- */
+:root.cyberpunk {
+  /* text */
+  --text-color-main: 233, 255, 250;             /* icy cyan-white */
+  --text-color-main-reverse: 5, 4, 15;
+  --text-color-alt: 137, 158, 210;               /* muted circuit blue */
+
+  /* backgrounds, dark -> darker */
+  --background-color-0: 6, 6, 16;                /* void */
+  --background-color-1: 13, 14, 32;
+  --background-color-2: 22, 22, 48;
+  --background-color-3: 34, 30, 68;
+  --background-color-focus: 0, 245, 255, .18;
+  --background-color-header: 9, 8, 22;
+  --background-color-canarman-main: 34, 30, 68;
+
+  /* borders: magenta at rest, cyan on hover/focus — the app already
+     transitions border-color-0 -> border-color-1, which gives a free
+     "power-up" glow effect on hover across the whole UI */
+  --border-color-0: 216, 33, 210;                /* neon magenta */
+  --border-color-1: 0, 245, 255;                 /* neon cyan */
+  --border-color-contrast: 120, 60, 200;
+
+  /* streaks / strength / weakness bars */
+  --background-color-streak-0: 255, 0, 90;
+  --background-color-streak-1: 255, 145, 0;
+  --background-color-strength-li-1: 0, 245, 180;
+  --background-color-strength-li-2: 0, 210, 150;
+  --background-color-strength-li-3: 0, 170, 120;
+  --background-color-weakness-li-1: 255, 0, 110;
+  --background-color-weakness-li-2: 210, 0, 90;
+  --background-color-weakness-li-3: 170, 0, 70;
+
+  /* status colours, pushed toward neon */
+  --text-color-error: 255, 60, 110;
+  --border-color-error: 255, 60, 110;
+  --background-color-error: 255, 40, 100;
+  --text-color-soft-error-main: 255, 210, 225;
+  --text-color-soft-error-alt: 255, 110, 150;
+  --border-color-soft-error: 255, 90, 140;
+  --background-color-soft-error: 255, 90, 140;
+  --background-color-warning-0: 130, 40, 30;
+  --background-color-warning-1: 255, 110, 20;
+  --background-color-warning-2: 255, 60, 0;
+  --background-color-success: 20, 255, 170;
+  --border-color-success: 20, 255, 170;
+  --background-color-selection: 216, 33, 210;
+
+  --color-very-good: 0, 255, 210;
+  --color-very-good-background: 0, 255, 210, .12;
+  --color-good: 20, 255, 130;
+  --color-good-background: 20, 255, 130, .12;
+  --color-average: 255, 230, 0;
+  --color-average-background: 255, 230, 0, .12;
+  --color-bad: 255, 140, 0;
+  --color-bad-background: 255, 140, 0, .12;
+  --color-very-bad: 255, 70, 90;
+  --color-very-bad-background: 255, 70, 90, .12;
+
+  /* glow-heavy shadows instead of soft drop shadows */
+  --box-shadow-window: 0 0 30px rgba(216, 33, 210, .25), 0 0 60px rgba(0, 245, 255, .08);
+  --box-shadow-element: 0 0 18px rgba(0, 245, 255, .18);
+  --color-shadow-element: rgba(0, 245, 255, .18);
+  --color-shadow-window: rgba(216, 33, 210, .25);
+
+  --box-shadow-color-scrollbar-track: 0, 245, 255, .08;
+  --box-shadow-color-scrollbar-thumb: 216, 33, 210, .7;
+  --box-shadow-color-scrollbar-thumb-on-hover: 0, 245, 255, .85;
+  --alpha-shadow-color-scroll-shaded-div: .5;
+
+  /* type */
+  --font-family: 'Rajdhani', 'Inter', sans-serif;
+  --font-family-display: 'Orbitron', 'Rajdhani', sans-serif;
+  --font-family-mono: 'Share Tech Mono', monospace;
+  --font-weight-regular: 500;
+  --font-weight-semi-bold: 700;
+  --font-weight-extra-bold: 900;
+}
+
+/* ---------- 2. Base surface: scanlines + grid + flicker ---------- */
+:root.cyberpunk body {
+  position: relative;
+  background-color: rgb(var(--background-color-0));
+  background-image:
+    linear-gradient(rgba(0, 245, 255, .05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(216, 33, 210, .05) 1px, transparent 1px);
+  background-size: 42px 42px, 42px 42px;
+  letter-spacing: .01em;
+}
+
+:root.cyberpunk body:before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, .035) 0px,
+    rgba(255, 255, 255, .035) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+  opacity: .5;
+}
+
+:root.cyberpunk body:after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9001;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, .55) 100%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root.cyberpunk body:before {
+    animation: cyberpunk-scan-drift 9s linear infinite;
+  }
+}
+
+@keyframes cyberpunk-scan-drift {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 120px; }
+}
+
+:root.cyberpunk ::selection {
+  background-color: rgba(var(--background-color-selection), .5);
+  color: #fff;
+}
+
+/* ---------- 3. Headings & display type: neon glow + glitch ---------- */
+:root.cyberpunk h1,
+:root.cyberpunk h2,
+:root.cyberpunk .login-box h1,
+:root.cyberpunk .landing-page h1,
+:root.cyberpunk .section-title,
+:root.cyberpunk #bottom-sheet-heading {
+  font-family: var(--font-family-display);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: rgb(var(--text-color-main));
+  text-shadow:
+    0 0 6px rgba(0, 245, 255, .55),
+    0 0 18px rgba(216, 33, 210, .35);
+}
+
+:root.cyberpunk .heading-emphasis,
+:root.cyberpunk .landing-page .heading-emphasis {
+  color: rgb(var(--border-color-1));
+  text-shadow: 0 0 10px rgba(0, 245, 255, .7);
+}
+
+:root.cyberpunk kbd.keyboard-key {
+  font-family: var(--font-family-mono);
+  background-color: rgb(var(--background-color-1));
+  border-bottom-color: rgb(var(--border-color-0));
+  color: rgb(var(--border-color-1));
+}
+
+/* ---------- 4. Buttons ---------- */
+:root.cyberpunk .button,
+:root.cyberpunk .landing-page .login-call-to-action {
+  font-family: var(--font-family-display);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  border-width: 2px;
+  border-color: rgb(var(--border-color-0));
+  background-color: rgba(var(--border-color-0), .06);
+  box-shadow: 0 0 10px rgba(var(--border-color-0), .35), inset 0 0 10px rgba(var(--border-color-0), .12);
+  transition: .15s;
+}
+
+:root.cyberpunk .button:not(.disabled):hover,
+:root.cyberpunk .button:not(.disabled):focus-visible,
+:root.cyberpunk .landing-page .login-call-to-action:is(:hover, :focus-visible) {
+  border-color: rgb(var(--border-color-1));
+  background-color: rgba(var(--border-color-1), .12);
+  box-shadow: 0 0 16px rgba(var(--border-color-1), .6), inset 0 0 12px rgba(var(--border-color-1), .18);
+  color: rgb(var(--text-color-main));
+}
+
+:root.cyberpunk .button:not(.disabled):active,
+:root.cyberpunk .button.submitter.submitting {
+  background-color: rgb(var(--border-color-1));
+  color: rgb(var(--text-color-main-reverse));
+}
+
+:root.cyberpunk .button.submitter:not(.disabled).submitted {
+  background-color: rgba(var(--background-color-success), .15);
+  border-color: rgb(var(--border-color-success));
+  box-shadow: 0 0 16px rgba(var(--background-color-success), .5);
+}
+
+/* ---------- 5. Inputs / checkboxes / radios ---------- */
+:root.cyberpunk .text-input-container,
+:root.cyberpunk .check-box input[type=checkbox] {
+  border-width: 2px;
+  border-color: rgb(var(--border-color-0));
+  background-color: rgba(var(--background-color-1), .6);
+}
+
+:root.cyberpunk .text-input-container:focus-within,
+:root.cyberpunk .check-box input[type=checkbox]:is(:hover, :focus-visible) {
+  border-color: rgb(var(--border-color-1));
+  box-shadow: 0 0 12px rgba(var(--border-color-1), .45);
+}
+
+:root.cyberpunk .text-input {
+  font-family: var(--font-family-mono);
+  letter-spacing: .02em;
+}
+
+:root.cyberpunk .radio-button input[type=radio] {
+  border-color: rgb(var(--border-color-0));
+}
+
+:root.cyberpunk .radio-button input[type=radio]:checked {
+  background-color: rgb(var(--border-color-1));
+  border-color: rgb(var(--border-color-1));
+  box-shadow: 0 0 8px rgba(var(--border-color-1), .7);
+}
+
+/* ---------- 6. Login screen ---------- */
+:root.cyberpunk .login-box {
+  border: 1px solid rgba(var(--border-color-0), .5);
+  box-shadow: var(--box-shadow-window);
+  background-color: rgba(var(--background-color-1), .92);
+}
+
+:root.cyberpunk a.external-link,
+:root.cyberpunk a.welcome-pop-up-links,
+:root.cyberpunk #login .policy-link {
+  color: rgb(var(--border-color-1));
+}
+
+:root.cyberpunk a.external-link:hover,
+:root.cyberpunk #login .policy-link:hover {
+  color: rgb(var(--text-color-main));
+  text-shadow: 0 0 6px rgba(0, 245, 255, .7);
+}
+
+/* ---------- 7. Tooltips & pop-ups ---------- */
+:root.cyberpunk .tooltip-content,
+:root.cyberpunk #pop-up-background.info,
+:root.cyberpunk #bottom-sheet-box,
+:root.cyberpunk #feedback-box {
+  border: 1px solid rgba(var(--border-color-0), .4);
+}
+
+/* ---------- 8. Scrollbar ---------- */
+:root.cyberpunk ::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 10px 10px rgb(var(--box-shadow-color-scrollbar-thumb));
+}
+
+/* ---------- 9. Landing page accents ---------- */
+:root.cyberpunk .landing-page .nav-logo,
+:root.cyberpunk .landing-page :is(.nav-links, .nav-login, .change-theme, .go-to-top) {
+  border: 1px solid rgba(var(--border-color-0), .35);
+}
+
+:root.cyberpunk .landing-page :is(.nav-links a.selected, .nav-links a:hover, .nav-login:hover, .change-theme:hover) {
+  background-color: rgba(var(--border-color-1), .85);
+  color: rgb(var(--text-color-main-reverse));
+  box-shadow: 0 0 14px rgba(var(--border-color-1), .5);
+}
+
+:root.cyberpunk #bento .bento-card {
+  border-color: rgba(var(--border-color-0), .35);
+}
+
+:root.cyberpunk #bento .bento-card:hover {
+  border-color: rgba(var(--border-color-1), .6);
+  box-shadow: 0 0 22px rgba(var(--border-color-1), .3);
+}
+
+:root.cyberpunk .blob path {
+  fill: rgb(var(--border-color-0));
+  opacity: .6;
+}
+
+:root.cyberpunk .landing-page footer {
+  border-top-color: rgba(var(--border-color-0), .4);
+}

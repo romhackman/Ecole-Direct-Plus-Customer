@@ -1,0 +1,761 @@
+/* ================================================= */
+/* CUSTOMIZER                                        */
+/* ================================================= */
+
+
+/* ================================================= */
+/* LIEN CUSTOMIZER                                    */
+/* ================================================= */
+
+#account-selector
+.options-container
+.links
+#customizer {
+
+    background-color:
+        rgb(var(--background-color-0));
+
+    padding: 7px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    transition:
+        all .1s,
+        outline 0s,
+        outline-offset 0s;
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-flow: row nowrap;
+
+    align-items: center;
+}
+
+
+/* ================================================= */
+/* HOVER                                              */
+/* ================================================= */
+
+#account-selector
+.options-container
+.links
+#customizer:hover,
+
+#account-selector
+.options-container
+.links
+#customizer:focus-visible {
+
+    background-color:
+        rgba(var(--background-color-0), .8);
+}
+
+
+/* ================================================= */
+/* ACTIVE                                             */
+/* ================================================= */
+
+#account-selector
+.options-container
+.links
+#customizer:active {
+
+    background-color:
+        rgba(var(--background-color-0), .6);
+}
+
+
+/* ================================================= */
+/* TEXTE                                              */
+/* ================================================= */
+
+#account-selector
+.options-container
+.links
+#customizer
+span.link-text {
+
+    color:
+        rgb(var(--text-color-alt));
+
+    flex: 1;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* ================================================= */
+/* SVG                                                */
+/* ================================================= */
+
+#account-selector
+.options-container
+.links
+#customizer
+svg {
+
+    height: 20px;
+
+    margin-right: 5px;
+
+    flex-shrink: 0;
+}
+
+
+/* ================================================= */
+/* ICÔNE                                              */
+/* ================================================= */
+
+#account-selector
+.options-container
+.links
+#customizer
+.extension-icon-path {
+
+    stroke:
+        rgb(var(--text-color-alt));
+
+    fill: none;
+}
+
+
+/* ================================================= */
+/* FOCUS                                              */
+/* ================================================= */
+
+#account-selector
+.options-container
+.links
+#customizer:focus-visible {
+
+    outline:
+        2px solid
+        rgb(var(--text-color-alt));
+
+    outline-offset: 2px;
+}
+
+
+/* ================================================= */
+/* POPUP                                              */
+/* ================================================= */
+
+#customizer-popup {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 999999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    background:
+        rgba(0, 0, 0, .55);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity .15s ease,
+        visibility .15s ease;
+}
+
+
+/* ================================================= */
+/* POPUP VISIBLE                                     */
+/* ================================================= */
+
+#customizer-popup.visible {
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* ================================================= */
+/* BOÎTE                                             */
+/* ================================================= */
+
+#customizer-popup
+.customizer-popup-box {
+
+    position: relative;
+
+    width: min(520px, 100%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    box-sizing: border-box;
+
+    padding: 25px;
+
+    border-radius: 16px;
+
+    background:
+        rgb(var(--background-color-0));
+
+    color:
+        rgb(var(--text-color-alt));
+
+    box-shadow:
+        0 25px 70px
+        rgba(0, 0, 0, .4);
+
+    transform:
+        translateY(15px)
+        scale(.97);
+
+    transition:
+        transform .15s ease;
+}
+
+
+/* ================================================= */
+/* ANIMATION                                         */
+/* ================================================= */
+
+#customizer-popup.visible
+.customizer-popup-box {
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* ================================================= */
+/* TITRE                                             */
+/* ================================================= */
+
+#customizer-popup
+#customizer-popup-title {
+
+    margin: 0 40px 20px 0;
+
+    font-size: 22px;
+
+    font-weight: 600;
+}
+
+
+/* ================================================= */
+/* FERMER                                            */
+/* ================================================= */
+
+#customizer-popup
+.customizer-popup-close {
+
+    position: absolute;
+
+    top: 10px;
+
+    right: 10px;
+
+    width: 35px;
+
+    height: 35px;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    color:
+        rgb(var(--text-color-alt));
+
+    font-size: 28px;
+
+    line-height: 35px;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+        background .1s,
+        opacity .1s;
+}
+
+
+#customizer-popup
+.customizer-popup-close:hover {
+
+    background:
+        rgba(var(--text-color-alt), .1);
+}
+
+
+#customizer-popup
+.customizer-popup-close:active {
+
+    opacity: .6;
+}
+
+
+/* ================================================= */
+/* COMPTE                                             */
+/* ================================================= */
+
+#customizer-popup
+.customizer-account-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 13px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(var(--background-color-1), .5);
+}
+
+
+/* ================================================= */
+/* PHOTO                                             */
+/* ================================================= */
+
+#customizer-popup
+.customizer-profile-container {
+
+    width: 58px;
+
+    height: 58px;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    background:
+        rgba(var(--text-color-alt), .08);
+}
+
+
+#customizer-popup
+.customizer-profile-picture {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+
+/* ================================================= */
+/* ERREUR IMAGE                                     */
+/* ================================================= */
+
+#customizer-popup
+.customizer-profile-picture.image-error {
+
+    opacity: .35;
+}
+
+
+/* ================================================= */
+/* INFORMATIONS                                     */
+/* ================================================= */
+
+#customizer-popup
+.customizer-account-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+
+    gap: 2px;
+}
+
+
+/* ================================================= */
+/* ÉTABLISSEMENT                                    */
+/* ================================================= */
+
+#customizer-popup
+.customizer-school-name {
+
+    display: block;
+
+    max-width: 100%;
+
+    color:
+        rgb(var(--text-color-alt));
+
+    font-size: 13px;
+
+    opacity: .7;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* ================================================= */
+/* NOM                                               */
+/* ================================================= */
+
+#customizer-popup
+.customizer-name {
+
+    display: flex;
+
+    gap: 5px;
+
+    color:
+        rgb(var(--text-color-alt));
+
+    font-size: 17px;
+
+    font-weight: 600;
+}
+
+
+/* ================================================= */
+/* CLASSE                                            */
+/* ================================================= */
+
+#customizer-popup
+.customizer-class {
+
+    color:
+        rgb(var(--text-color-alt));
+
+    font-size: 13px;
+
+    opacity: .65;
+}
+
+
+/* ================================================= */
+/* SÉPARATEUR                                       */
+/* ================================================= */
+
+#customizer-popup
+.customizer-divider {
+
+    width: 100%;
+
+    height: 1px;
+
+    margin: 20px 0;
+
+    background:
+        rgba(var(--text-color-alt), .1);
+}
+
+
+/* ================================================= */
+/* CHAMP                                             */
+/* ================================================= */
+
+#customizer-popup
+.customizer-field {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    margin-bottom: 17px;
+}
+
+
+/* ================================================= */
+/* LABEL                                             */
+/* ================================================= */
+
+#customizer-popup
+.customizer-field label {
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+/* ================================================= */
+/* INPUT                                             */
+/* ================================================= */
+
+#customizer-popup
+.customizer-field input {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 10px 12px;
+
+    border: 1px solid
+        rgba(var(--text-color-alt), .15);
+
+    border-radius: 9px;
+
+    outline: none;
+
+    background:
+        rgba(var(--background-color-1), .5);
+
+    color:
+        rgb(var(--text-color-alt));
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    transition:
+        border-color .1s,
+        box-shadow .1s;
+}
+
+
+#customizer-popup
+.customizer-field input:focus {
+
+    border-color:
+        rgb(var(--text-color-alt));
+
+    box-shadow:
+        0 0 0 2px
+        rgba(var(--text-color-alt), .1);
+}
+
+
+/* ================================================= */
+/* PLACEHOLDER                                       */
+/* ================================================= */
+
+#customizer-popup
+.customizer-field input::placeholder {
+
+    color:
+        rgb(var(--text-color-alt));
+
+    opacity: .4;
+}
+
+
+/* ================================================= */
+/* PETIT TEXTE                                       */
+/* ================================================= */
+
+#customizer-popup
+.customizer-field small {
+
+    font-size: 12px;
+
+    line-height: 1.4;
+
+    opacity: .55;
+}
+
+
+/* ================================================= */
+/* CHECKBOX                                          */
+/* ================================================= */
+
+#customizer-popup
+.customizer-checkbox {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+
+#customizer-popup
+.customizer-checkbox input {
+
+    width: 17px;
+
+    height: 17px;
+
+    margin: 0;
+
+    accent-color:
+        rgb(var(--text-color-alt));
+
+    cursor: pointer;
+}
+
+
+/* ================================================= */
+/* ACTIONS                                           */
+/* ================================================= */
+
+#customizer-popup
+.customizer-actions {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 5px;
+}
+
+
+/* ================================================= */
+/* BOUTONS                                           */
+/* ================================================= */
+
+#customizer-popup
+.customizer-button {
+
+    padding: 10px 16px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        opacity .1s,
+        transform .1s;
+}
+
+
+#customizer-popup
+.customizer-button:hover {
+
+    opacity: .85;
+}
+
+
+#customizer-popup
+.customizer-button:active {
+
+    transform:
+        scale(.97);
+}
+
+
+/* ================================================= */
+/* BOUTON PRINCIPAL                                  */
+/* ================================================= */
+
+#customizer-popup
+.customizer-button.primary {
+
+    background:
+        rgb(var(--text-color-alt));
+
+    color:
+        rgb(var(--background-color-0));
+}
+
+
+/* ================================================= */
+/* BOUTON SECONDAIRE                                 */
+/* ================================================= */
+
+#customizer-popup
+.customizer-button.secondary {
+
+    background:
+        rgba(var(--text-color-alt), .1);
+
+    color:
+        rgb(var(--text-color-alt));
+}
+
+
+/* ================================================= */
+/* MOBILE                                            */
+/* ================================================= */
+
+@media (max-width: 600px) {
+
+    #customizer-popup {
+
+        padding: 10px;
+    }
+
+
+    #customizer-popup
+    .customizer-popup-box {
+
+        width: 100%;
+
+        max-height: 94vh;
+
+        padding: 20px;
+
+        border-radius: 14px;
+    }
+
+
+    #customizer-popup
+    .customizer-actions {
+
+        flex-direction: column-reverse;
+    }
+
+
+    #customizer-popup
+    .customizer-button {
+
+        width: 100%;
+    }
+
+}
