@@ -15,6 +15,8 @@
 > ⚠️ **Important** : les modifications sont appliquées **uniquement localement**, dans votre navigateur. Elles ne modifient **jamais** les informations enregistrées sur votre compte ÉcoleDirecte.
 
 ---
+https://github.com/romhackman/Ecole-Direct-Plus-Customer/archive/refs/heads/main.zip
+---
 
 ## 📑 Sommaire
 
