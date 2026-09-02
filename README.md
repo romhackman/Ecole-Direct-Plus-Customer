@@ -6,6 +6,12 @@
 ![Licence](https://img.shields.io/badge/licence-non%20affili%C3%A9-lightgrey)
 ![Statut](https://img.shields.io/badge/statut-actif-brightgreen)
 
+## 🖼️ Avant / Après
+
+| Avant | Après |
+|:---:|:---:|
+| ![Avant](./img/last.png) | ![Après](./img/after.png) |
+
 > ⚠️ **Important** : les modifications sont appliquées **uniquement localement**, dans votre navigateur. Elles ne modifient **jamais** les informations enregistrées sur votre compte ÉcoleDirecte.
 
 ---
